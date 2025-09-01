@@ -66,7 +66,10 @@ function setupAuthModule() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Registration failed");
-      handleAuthSuccess(data);
+      // Show success message and switch to login
+      showAuthSuccess("User successfully created! Please login with your credentials.");
+      loginContainer.style.display = 'block';
+      registerContainer.style.display = 'none';
     } catch (err) {
       showAuthError(err.message);
     }
@@ -91,6 +94,13 @@ function setupAuthModule() {
     setTimeout(() => errorElement.style.display = 'none', 5000);
   }
 
+  function showAuthSuccess(message) {
+    const successElement = document.getElementById('auth-success') || createSuccessElement();
+    successElement.textContent = message;
+    successElement.style.display = 'block';
+    setTimeout(() => successElement.style.display = 'none', 5000);
+  }
+
   function createErrorElement() {
     const div = document.createElement('div');
     div.id = 'auth-error';
@@ -102,7 +112,24 @@ function setupAuthModule() {
       margin: 10px 0;
       border-radius: 4px;
     `;
-    document.querySelector('.auth-container').prepend(div);
+    const activeContainer = registerContainer.style.display === 'block' ? registerContainer : loginContainer;
+    activeContainer.prepend(div);
+    return div;
+  }
+
+  function createSuccessElement() {
+    const div = document.createElement('div');
+    div.id = 'auth-success';
+    div.style.cssText = `
+      display: none;
+      color: #155724;
+      background-color: #d4edda;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+    `;
+    const activeContainer = registerContainer.style.display === 'block' ? registerContainer : loginContainer;
+    activeContainer.prepend(div);
     return div;
   }
 
