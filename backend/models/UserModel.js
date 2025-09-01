@@ -3,15 +3,15 @@ import pool from "../db.js";
 import bcrypt from "bcryptjs";
 
 // Create user
-export const createUser = async ({ name, email, password }) => {
+export const createUser = async ({ name, email, password, role = 'user' }) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const query = `
-    INSERT INTO users (name, email, password)
-    VALUES ($1, $2, $3)
+    INSERT INTO users (name, email, password, role)
+    VALUES ($1, $2, $3, $4)
     RETURNING *
   `;
-  const values = [name, email, hashedPassword];
+  const values = [name, email, hashedPassword, role];
 
   const { rows } = await pool.query(query, values);
   return rows[0];

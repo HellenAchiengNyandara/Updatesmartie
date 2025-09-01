@@ -506,14 +506,35 @@ window.app = {
   // Render Cows screen
   renderCows: function(container) {
     const cows = [...dataService.cows].sort((a, b) => b.milkVolume - a.milkVolume);
-    
+
     if (!cows || cows.length === 0) {
-      container.innerHTML = '<div class="error">No cow data available</div>';
+      container.innerHTML = `
+        <div class="section-header">
+          <h2>All Cows (0)</h2>
+          <button class="btn btn-primary" id="add-cow-btn">
+            <i class="fas fa-plus"></i> Add Cow
+          </button>
+        </div>
+        <div class="empty-state">
+          <i class="fas fa-cow"></i>
+          <p>No cows in the farm yet.</p>
+          <button class="btn btn-primary" id="add-first-cow-btn">Add Your First Cow</button>
+        </div>
+      `;
+      this.setupCowEventListeners();
       return;
     }
-    
+
     const cowsHtml = cows.map(cow => `
-      <div class="cow-card">
+      <div class="cow-card" data-cow-id="${cow.id}">
+        <div class="cow-actions">
+          <button class="btn btn-sm btn-edit" data-cow-id="${cow.id}" title="Edit">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-sm btn-delete" data-cow-id="${cow.id}" title="Delete">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
         <img src="${cow.photo}" alt="${cow.name}" class="cow-image">
         <div class="cow-info">
           <div class="cow-name">${cow.name}</div>
@@ -549,15 +570,126 @@ window.app = {
         </div>
       </div>
     `).join('');
-    
+
     container.innerHTML = `
       <div class="section-header">
         <h2>All Cows (${cows.length})</h2>
+        <button class="btn btn-primary" id="add-cow-btn">
+          <i class="fas fa-plus"></i> Add Cow
+        </button>
       </div>
       <div class="cow-list">
         ${cowsHtml}
       </div>
     `;
+
+    this.setupCowEventListeners();
+  },
+
+  // Setup event listeners for cow CRUD operations
+  setupCowEventListeners: function() {
+    // Add cow buttons
+    document.getElementById('add-cow-btn')?.addEventListener('click', () => this.openCowModal());
+    document.getElementById('add-first-cow-btn')?.addEventListener('click', () => this.openCowModal());
+
+    // Edit buttons
+    document.querySelectorAll('.btn-edit').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const cowId = e.currentTarget.dataset.cowId;
+        this.openCowModal(cowId);
+      });
+    });
+
+    // Delete buttons
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const cowId = e.currentTarget.dataset.cowId;
+        this.deleteCow(cowId);
+      });
+    });
+
+    // Modal close
+    document.getElementById('close-cow-modal')?.addEventListener('click', () => this.closeCowModal());
+
+    // Form submission
+    document.getElementById('cow-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.saveCow();
+    });
+  },
+
+  // Open cow modal for add/edit
+  openCowModal: function(cowId = null) {
+    const modal = document.getElementById('cow-modal');
+    const form = document.getElementById('cow-form');
+    const title = document.getElementById('modal-title');
+
+    if (cowId) {
+      // Edit mode
+      const cow = dataService.getCow(cowId);
+      if (cow) {
+        title.textContent = 'Edit Cow';
+        document.getElementById('cow-id').value = cow.id;
+        document.getElementById('cow-name').value = cow.name;
+        document.getElementById('cow-age').value = cow.age;
+        document.getElementById('cow-lactationStage').value = cow.lactationStage;
+        document.getElementById('cow-photo').value = cow.photo;
+        document.getElementById('cow-milkVolume').value = cow.milkVolume;
+        document.getElementById('cow-fatPercent').value = cow.fatPercent;
+        document.getElementById('cow-proteinPercent').value = cow.proteinPercent;
+        document.getElementById('cow-lactosePercent').value = cow.lactosePercent;
+        document.getElementById('cow-pH').value = cow.pH;
+      }
+    } else {
+      // Add mode
+      title.textContent = 'Add Cow';
+      form.reset();
+      document.getElementById('cow-id').value = '';
+    }
+
+    modal.style.display = 'block';
+  },
+
+  // Close cow modal
+  closeCowModal: function() {
+    document.getElementById('cow-modal').style.display = 'none';
+  },
+
+  // Save cow (add or edit)
+  saveCow: function() {
+    const formData = new FormData(document.getElementById('cow-form'));
+    const cowData = {
+      name: formData.get('name'),
+      age: parseInt(formData.get('age')),
+      lactationStage: formData.get('lactationStage'),
+      photo: formData.get('photo') || 'assets/cow-1.png',
+      milkVolume: parseFloat(formData.get('milkVolume')),
+      fatPercent: parseFloat(formData.get('fatPercent')),
+      proteinPercent: parseFloat(formData.get('proteinPercent')),
+      lactosePercent: parseFloat(formData.get('lactosePercent')),
+      pH: parseFloat(formData.get('pH'))
+    };
+
+    const cowId = formData.get('id');
+
+    if (cowId) {
+      // Edit
+      dataService.editCow(cowId, cowData);
+    } else {
+      // Add
+      dataService.addCow(cowData);
+    }
+
+    this.closeCowModal();
+    this.renderCows(document.getElementById('app-content'));
+  },
+
+  // Delete cow
+  deleteCow: function(cowId) {
+    if (confirm('Are you sure you want to delete this cow?')) {
+      dataService.deleteCow(cowId);
+      this.renderCows(document.getElementById('app-content'));
+    }
   },
   
   // Render Alerts screen

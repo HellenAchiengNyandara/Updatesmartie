@@ -131,6 +131,59 @@
     </nav>
   </div>
 
+  <!-- Modal for Add/Edit Cow -->
+  <div id="cow-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-button" id="close-cow-modal">&times;</span>
+      <h2 id="modal-title">Add Cow</h2>
+      <form id="cow-form">
+        <input type="hidden" id="cow-id" name="id" />
+        <div class="form-group">
+          <label for="cow-name">Name</label>
+          <input type="text" id="cow-name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="cow-age">Age</label>
+          <input type="number" id="cow-age" name="age" min="0" required />
+        </div>
+        <div class="form-group">
+          <label for="cow-lactationStage">Lactation Stage</label>
+          <select id="cow-lactationStage" name="lactationStage" required>
+            <option value="Early">Early</option>
+            <option value="Mid">Mid</option>
+            <option value="Late">Late</option>
+            <option value="Peak">Peak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cow-photo">Photo URL</label>
+          <input type="text" id="cow-photo" name="photo" placeholder="assets/cow-1.png" />
+        </div>
+        <div class="form-group">
+          <label for="cow-milkVolume">Milk Volume (L)</label>
+          <input type="number" id="cow-milkVolume" name="milkVolume" step="0.1" min="0" required />
+        </div>
+        <div class="form-group">
+          <label for="cow-fatPercent">Fat %</label>
+          <input type="number" id="cow-fatPercent" name="fatPercent" step="0.1" min="0" max="100" required />
+        </div>
+        <div class="form-group">
+          <label for="cow-proteinPercent">Protein %</label>
+          <input type="number" id="cow-proteinPercent" name="proteinPercent" step="0.1" min="0" max="100" required />
+        </div>
+        <div class="form-group">
+          <label for="cow-lactosePercent">Lactose %</label>
+          <input type="number" id="cow-lactosePercent" name="lactosePercent" step="0.1" min="0" max="100" required />
+        </div>
+        <div class="form-group">
+          <label for="cow-pH">pH</label>
+          <input type="number" id="cow-pH" name="pH" step="0.1" min="0" max="14" required />
+        </div>
+        <button type="submit" class="btn btn-primary" id="save-cow-btn">Save</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/config.js" defer></script>
   <script src="js/utils.js" defer></script>
