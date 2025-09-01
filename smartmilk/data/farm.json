@@ -1,0 +1,21 @@
+{
+  "farmName": "Salma's Dairy Farm",
+  "totalCows": 15,
+  "averageFat": 3.6,
+  "averageProtein": 3.26,
+  "averageLactose": 4.7,
+  "averagePH": 6.7,
+  "alerts": [
+    {"cowId": "COW002", "message": "High fat content"},
+    {"cowId": "COW003", "message": "Low protein content"},
+    {"cowId": "COW006", "message": "High fat content"},
+    {"cowId": "COW007", "message": "Low protein content"},
+    {"cowId": "COW007", "message": "Low milk production"},
+    {"cowId": "COW008", "message": "Low milk production"},
+    {"cowId": "COW008", "message": "Low protein content"},
+    {"cowId": "COW008", "message": "High pH"},
+    {"cowId": "COW012", "message": "Low milk production"},
+    {"cowId": "COW013", "message": "High fat content"}
+  ],
+  "lastUpdated": "2025-06-02"
+}

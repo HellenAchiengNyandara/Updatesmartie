@@ -1,0 +1,302 @@
+[
+  {
+    "id": "COW001",
+    "name": "Bessie",
+    "age": 5,
+    "lactationStage": "Mid",
+    "photo": "assets/cow-1.png",
+    "milkVolume": 14.5,
+    "fatPercent": 3.6,
+    "proteinPercent": 3.2,
+    "lactosePercent": 4.8,
+    "pH": 6.7,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 14.2, "fatPercent": 3.5, "proteinPercent": 3.1, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-08", "milkVolume": 14.4, "fatPercent": 3.6, "proteinPercent": 3.2, "lactosePercent": 4.8, "pH": 6.7},
+      {"date": "2025-05-15", "milkVolume": 14.3, "fatPercent": 3.5, "proteinPercent": 3.1, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-22", "milkVolume": 14.6, "fatPercent": 3.6, "proteinPercent": 3.2, "lactosePercent": 4.8, "pH": 6.7},
+      {"date": "2025-05-29", "milkVolume": 14.5, "fatPercent": 3.6, "proteinPercent": 3.2, "lactosePercent": 4.8, "pH": 6.7}
+    ]
+  },
+  {
+    "id": "COW002",
+    "name": "Daisy",
+    "age": 4,
+    "lactationStage": "Early",
+    "photo": "assets/cow-2.png",
+    "milkVolume": 16.8,
+    "fatPercent": 3.8,
+    "proteinPercent": 3.4,
+    "lactosePercent": 4.9,
+    "pH": 6.6,
+    "alerts": ["High fat content"],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 16.5, "fatPercent": 3.7, "proteinPercent": 3.3, "lactosePercent": 4.8, "pH": 6.6},
+      {"date": "2025-05-08", "milkVolume": 16.7, "fatPercent": 3.8, "proteinPercent": 3.4, "lactosePercent": 4.9, "pH": 6.6},
+      {"date": "2025-05-15", "milkVolume": 16.6, "fatPercent": 3.7, "proteinPercent": 3.3, "lactosePercent": 4.8, "pH": 6.6},
+      {"date": "2025-05-22", "milkVolume": 16.9, "fatPercent": 3.8, "proteinPercent": 3.4, "lactosePercent": 4.9, "pH": 6.6},
+      {"date": "2025-05-29", "milkVolume": 16.8, "fatPercent": 3.8, "proteinPercent": 3.4, "lactosePercent": 4.9, "pH": 6.6}
+    ]
+  },
+  {
+    "id": "COW003",
+    "name": "Luna",
+    "age": 6,
+    "lactationStage": "Late",
+    "photo": "assets/cow-3.png",
+    "milkVolume": 12.3,
+    "fatPercent": 3.2,
+    "proteinPercent": 2.9,
+    "lactosePercent": 4.5,
+    "pH": 6.8,
+    "alerts": ["Low protein content"],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 12.5, "fatPercent": 3.3, "proteinPercent": 2.8, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-08", "milkVolume": 12.2, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.5, "pH": 6.8},
+      {"date": "2025-05-15", "milkVolume": 12.4, "fatPercent": 3.3, "proteinPercent": 2.8, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-22", "milkVolume": 12.1, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.5, "pH": 6.8},
+      {"date": "2025-05-29", "milkVolume": 12.3, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.5, "pH": 6.8}
+    ]
+  },
+  {
+    "id": "COW004",
+    "name": "Rosie",
+    "age": 3,
+    "lactationStage": "Peak",
+    "photo": "assets/cow-4.png",
+    "milkVolume": 18.0,
+    "fatPercent": 3.9,
+    "proteinPercent": 3.5,
+    "lactosePercent": 5.0,
+    "pH": 6.5,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 17.8, "fatPercent": 3.9, "proteinPercent": 3.5, "lactosePercent": 5.0, "pH": 6.5},
+      {"date": "2025-05-08", "milkVolume": 17.9, "fatPercent": 3.9, "proteinPercent": 3.5, "lactosePercent": 5.0, "pH": 6.5},
+      {"date": "2025-05-15", "milkVolume": 18.1, "fatPercent": 3.9, "proteinPercent": 3.5, "lactosePercent": 5.0, "pH": 6.5},
+      {"date": "2025-05-22", "milkVolume": 17.9, "fatPercent": 3.9, "proteinPercent": 3.5, "lactosePercent": 5.0, "pH": 6.5},
+      {"date": "2025-05-29", "milkVolume": 18.0, "fatPercent": 3.9, "proteinPercent": 3.5, "lactosePercent": 5.0, "pH": 6.5}
+    ]
+  },
+  {
+    "id": "COW005",
+    "name": "Molly",
+    "age": 4,
+    "lactationStage": "Mid",
+    "photo": "assets/cow-5.png",
+    "milkVolume": 15.7,
+    "fatPercent": 3.5,
+    "proteinPercent": 3.3,
+    "lactosePercent": 4.7,
+    "pH": 6.6,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 15.5, "fatPercent": 3.5, "proteinPercent": 3.2, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-08", "milkVolume": 15.6, "fatPercent": 3.5, "proteinPercent": 3.3, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-15", "milkVolume": 15.8, "fatPercent": 3.5, "proteinPercent": 3.3, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-22", "milkVolume": 15.7, "fatPercent": 3.5, "proteinPercent": 3.3, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-29", "milkVolume": 15.7, "fatPercent": 3.5, "proteinPercent": 3.3, "lactosePercent": 4.7, "pH": 6.6}
+    ]
+  },
+  {
+    "id": "COW006",
+    "name": "Buttercup",
+    "age": 5,
+    "lactationStage": "Mid",
+    "photo": "assets/cow-6.png",
+    "milkVolume": 13.8,
+    "fatPercent": 4.1,
+    "proteinPercent": 3.6,
+    "lactosePercent": 4.6,
+    "pH": 6.7,
+    "alerts": ["High fat content"],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 13.5, "fatPercent": 4.0, "proteinPercent": 3.5, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-08", "milkVolume": 13.7, "fatPercent": 4.1, "proteinPercent": 3.6, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-15", "milkVolume": 13.9, "fatPercent": 4.0, "proteinPercent": 3.5, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-22", "milkVolume": 13.8, "fatPercent": 4.1, "proteinPercent": 3.6, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-29", "milkVolume": 13.8, "fatPercent": 4.1, "proteinPercent": 3.6, "lactosePercent": 4.6, "pH": 6.7}
+    ]
+  },
+  {
+    "id": "COW007",
+    "name": "Clover",
+    "age": 3,
+    "lactationStage": "Early",
+    "photo": "assets/cow-7.png",
+    "milkVolume": 11.2,
+    "fatPercent": 3.1,
+    "proteinPercent": 2.8,
+    "lactosePercent": 4.3,
+    "pH": 6.9,
+    "alerts": ["Low protein content", "Low milk production"],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 11.5, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.4, "pH": 6.8},
+      {"date": "2025-05-08", "milkVolume": 11.1, "fatPercent": 3.1, "proteinPercent": 2.8, "lactosePercent": 4.3, "pH": 6.9},
+      {"date": "2025-05-15", "milkVolume": 11.3, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.4, "pH": 6.8},
+      {"date": "2025-05-22", "milkVolume": 11.0, "fatPercent": 3.1, "proteinPercent": 2.8, "lactosePercent": 4.3, "pH": 6.9},
+      {"date": "2025-05-29", "milkVolume": 11.2, "fatPercent": 3.1, "proteinPercent": 2.8, "lactosePercent": 4.3, "pH": 6.9}
+    ]
+  },
+  {
+    "id": "COW008",
+    "name": "Dottie",
+    "age": 7,
+    "lactationStage": "Late",
+    "photo": "assets/cow-8.png",
+    "milkVolume": 9.8,
+    "fatPercent": 3.0,
+    "proteinPercent": 2.7,
+    "lactosePercent": 4.2,
+    "pH": 7.0,
+    "alerts": ["Low milk production", "Low protein content", "High pH"],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 10.1, "fatPercent": 3.1, "proteinPercent": 2.8, "lactosePercent": 4.3, "pH": 6.9},
+      {"date": "2025-05-08", "milkVolume": 9.7, "fatPercent": 3.0, "proteinPercent": 2.7, "lactosePercent": 4.2, "pH": 7.0},
+      {"date": "2025-05-15", "milkVolume": 9.9, "fatPercent": 3.1, "proteinPercent": 2.8, "lactosePercent": 4.3, "pH": 6.9},
+      {"date": "2025-05-22", "milkVolume": 9.6, "fatPercent": 3.0, "proteinPercent": 2.7, "lactosePercent": 4.2, "pH": 7.0},
+      {"date": "2025-05-29", "milkVolume": 9.8, "fatPercent": 3.0, "proteinPercent": 2.7, "lactosePercent": 4.2, "pH": 7.0}
+    ]
+  },
+  {
+    "id": "COW009",
+    "name": "Ella",
+    "age": 4,
+    "lactationStage": "Mid",
+    "photo": "assets/cow-9.png",
+    "milkVolume": 16.2,
+    "fatPercent": 3.7,
+    "proteinPercent": 3.4,
+    "lactosePercent": 4.8,
+    "pH": 6.6,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 16.0, "fatPercent": 3.6, "proteinPercent": 3.3, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-08", "milkVolume": 16.1, "fatPercent": 3.7, "proteinPercent": 3.4, "lactosePercent": 4.8, "pH": 6.6},
+      {"date": "2025-05-15", "milkVolume": 16.3, "fatPercent": 3.6, "proteinPercent": 3.3, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-22", "milkVolume": 16.2, "fatPercent": 3.7, "proteinPercent": 3.4, "lactosePercent": 4.8, "pH": 6.6},
+      {"date": "2025-05-29", "milkVolume": 16.2, "fatPercent": 3.7, "proteinPercent": 3.4, "lactosePercent": 4.8, "pH": 6.6}
+    ]
+  },
+  {
+    "id": "COW010",
+    "name": "Fiona",
+    "age": 2,
+    "lactationStage": "Early",
+    "photo": "assets/cow-10.png",
+    "milkVolume": 14.0,
+    "fatPercent": 3.4,
+    "proteinPercent": 3.1,
+    "lactosePercent": 4.6,
+    "pH": 6.7,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 13.8, "fatPercent": 3.3, "proteinPercent": 3.0, "lactosePercent": 4.5, "pH": 6.7},
+      {"date": "2025-05-08", "milkVolume": 13.9, "fatPercent": 3.4, "proteinPercent": 3.1, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-15", "milkVolume": 14.1, "fatPercent": 3.3, "proteinPercent": 3.0, "lactosePercent": 4.5, "pH": 6.7},
+      {"date": "2025-05-22", "milkVolume": 14.0, "fatPercent": 3.4, "proteinPercent": 3.1, "lactosePercent": 4.6, "pH": 6.7},
+      {"date": "2025-05-29", "milkVolume": 14.0, "fatPercent": 3.4, "proteinPercent": 3.1, "lactosePercent": 4.6, "pH": 6.7}
+    ]
+  },
+  {
+    "id": "COW011",
+    "name": "Ginger",
+    "age": 5,
+    "lactationStage": "Mid",
+    "photo": "assets/cow-11.png",
+    "milkVolume": 17.5,
+    "fatPercent": 3.8,
+    "proteinPercent": 3.5,
+    "lactosePercent": 4.9,
+    "pH": 6.5,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 17.3, "fatPercent": 3.7, "proteinPercent": 3.4, "lactosePercent": 4.8, "pH": 6.5},
+      {"date": "2025-05-08", "milkVolume": 17.4, "fatPercent": 3.8, "proteinPercent": 3.5, "lactosePercent": 4.9, "pH": 6.5},
+      {"date": "2025-05-15", "milkVolume": 17.6, "fatPercent": 3.7, "proteinPercent": 3.4, "lactosePercent": 4.8, "pH": 6.5},
+      {"date": "2025-05-22", "milkVolume": 17.5, "fatPercent": 3.8, "proteinPercent": 3.5, "lactosePercent": 4.9, "pH": 6.5},
+      {"date": "2025-05-29", "milkVolume": 17.5, "fatPercent": 3.8, "proteinPercent": 3.5, "lactosePercent": 4.9, "pH": 6.5}
+    ]
+  },
+  {
+    "id": "COW012",
+    "name": "Hazel",
+    "age": 6,
+    "lactationStage": "Late",
+    "photo": "assets/cow-12.png",
+    "milkVolume": 10.5,
+    "fatPercent": 3.2,
+    "proteinPercent": 2.9,
+    "lactosePercent": 4.4,
+    "pH": 6.8,
+    "alerts": ["Low milk production"],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 10.8, "fatPercent": 3.3, "proteinPercent": 3.0, "lactosePercent": 4.5, "pH": 6.7},
+      {"date": "2025-05-08", "milkVolume": 10.4, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.4, "pH": 6.8},
+      {"date": "2025-05-15", "milkVolume": 10.6, "fatPercent": 3.3, "proteinPercent": 3.0, "lactosePercent": 4.5, "pH": 6.7},
+      {"date": "2025-05-22", "milkVolume": 10.3, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.4, "pH": 6.8},
+      {"date": "2025-05-29", "milkVolume": 10.5, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.4, "pH": 6.8}
+    ]
+  },
+  {
+    "id": "COW013",
+    "name": "Ivy",
+    "age": 3,
+    "lactationStage": "Peak",
+    "photo": "assets/cow-13.png",
+    "milkVolume": 19.2,
+    "fatPercent": 4.0,
+    "proteinPercent": 3.6,
+    "lactosePercent": 5.1,
+    "pH": 6.4,
+    "alerts": ["High fat content"],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 19.0, "fatPercent": 3.9, "proteinPercent": 3.5, "lactosePercent": 5.0, "pH": 6.4},
+      {"date": "2025-05-08", "milkVolume": 19.1, "fatPercent": 4.0, "proteinPercent": 3.6, "lactosePercent": 5.1, "pH": 6.4},
+      {"date": "2025-05-15", "milkVolume": 19.3, "fatPercent": 3.9, "proteinPercent": 3.5, "lactosePercent": 5.0, "pH": 6.4},
+      {"date": "2025-05-22", "milkVolume": 19.2, "fatPercent": 4.0, "proteinPercent": 3.6, "lactosePercent": 5.1, "pH": 6.4},
+      {"date": "2025-05-29", "milkVolume": 19.2, "fatPercent": 4.0, "proteinPercent": 3.6, "lactosePercent": 5.1, "pH": 6.4}
+    ]
+  },
+  {
+    "id": "COW014",
+    "name": "Jasmine",
+    "age": 4,
+    "lactationStage": "Mid",
+    "photo": "assets/cow-14.png",
+    "milkVolume": 15.0,
+    "fatPercent": 3.5,
+    "proteinPercent": 3.2,
+    "lactosePercent": 4.7,
+    "pH": 6.6,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 14.8, "fatPercent": 3.4, "proteinPercent": 3.1, "lactosePercent": 4.6, "pH": 6.6},
+      {"date": "2025-05-08", "milkVolume": 14.9, "fatPercent": 3.5, "proteinPercent": 3.2, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-15", "milkVolume": 15.1, "fatPercent": 3.4, "proteinPercent": 3.1, "lactosePercent": 4.6, "pH": 6.6},
+      {"date": "2025-05-22", "milkVolume": 15.0, "fatPercent": 3.5, "proteinPercent": 3.2, "lactosePercent": 4.7, "pH": 6.6},
+      {"date": "2025-05-29", "milkVolume": 15.0, "fatPercent": 3.5, "proteinPercent": 3.2, "lactosePercent": 4.7, "pH": 6.6}
+    ]
+  },
+  {
+    "id": "COW015",
+    "name": "Katie",
+    "age": 2,
+    "lactationStage": "Early",
+    "photo": "assets/cow-15.png",
+    "milkVolume": 13.5,
+    "fatPercent": 3.3,
+    "proteinPercent": 3.0,
+    "lactosePercent": 4.5,
+    "pH": 6.7,
+    "alerts": [],
+    "metricsHistory": [
+      {"date": "2025-05-01", "milkVolume": 13.3, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.4, "pH": 6.7},
+      {"date": "2025-05-08", "milkVolume": 13.4, "fatPercent": 3.3, "proteinPercent": 3.0, "lactosePercent": 4.5, "pH": 6.7},
+      {"date": "2025-05-15", "milkVolume": 13.6, "fatPercent": 3.2, "proteinPercent": 2.9, "lactosePercent": 4.4, "pH": 6.7},
+      {"date": "2025-05-22", "milkVolume": 13.5, "fatPercent": 3.3, "proteinPercent": 3.0, "lactosePercent": 4.5, "pH": 6.7},
+      {"date": "2025-05-29", "milkVolume": 13.5, "fatPercent": 3.3, "proteinPercent": 3.0, "lactosePercent": 4.5, "pH": 6.7}
+    ]
+  }
+]

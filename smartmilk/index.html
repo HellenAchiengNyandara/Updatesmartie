@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMARTMILK - Dairy Farm Analytics</title>
+  <meta name="description" content="Monitor milk quality and cow health with SMARTMILK analytics platform">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/fav-icon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="assets/fav-icon.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="assets/site.webmanifest">  
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+
+<body>
+  <!-- Auth Screen -->
+  <div id="auth-screen" class="screen active">
+    <div class="auth-container" id="login-container">
+      <img src="assets/logo.svg" alt="SMARTMILK Logo" class="auth-logo">
+      <h1>Welcome to INTELLICOW</h1>
+      <p>Dairy farm analytics platform</p>
+      
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input type="text" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      
+      <div class="auth-footer">
+        <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+        <div class="auth-divider">
+          <span>or</span>
+        </div>
+        <button id="google-signin-btn" class="btn btn-google">
+          <i class="fab fa-google"></i> Sign in with Google
+        </button>
+      </div>
+    </div>
+    
+    <div class="auth-container" id="register-container" style="display:none">
+      <img src="assets/logo.svg" alt="SMARTMILK Logo" class="auth-logo">
+      <h1>Create Account</h1>
+      
+      <form id="register-form" class="auth-form">
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input type="text" name="name" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+      
+      <div class="auth-footer">
+        <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" class="screen">
+    <header class="app-header">
+      <button id="menu-toggle" class="icon-button">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 id="screen-title">Dashboard</h1>
+      <div id="user-menu" class="user-avatar">
+        <img id="user-avatar-img" src="assets/default-avatar.png" alt="User Avatar">
+      </div>
+    </header>
+    
+    <nav id="side-menu" class="side-menu">
+      <div class="menu-header">
+        <img src="assets/logo.svg" alt="SMARTMILK" class="menu-logo">
+        <button id="close-menu" class="icon-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="menu-items">
+        <li><a href="#" class="menu-item active" data-screen="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+        <li><a href="#" class="menu-item" data-screen="cows"><i class="fas fa-cow"></i><span>My Cows</span></a></li>
+        <li><a href="#" class="menu-item" data-screen="reports"><i class="fas fa-chart-pie"></i><span>Reports</span></a></li>
+        <li><a href="#" class="menu-item" data-screen="alerts"><i class="fas fa-bell"></i><span>Alerts</span><span class="badge" id="alert-count">0</span></a></li>
+        <li><a href="#" class="menu-item" data-screen="settings"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+      </ul>
+      <div class="menu-footer">
+        <button id="logout-btn" class="btn btn-outline"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </nav>
+    
+    <main id="app-content">
+      <div class="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading your farm data...</p>
+      </div>
+    </main>
+    
+    <nav class="bottom-tabs">
+      <a href="#" class="tab-item active" data-screen="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+      <a href="#" class="tab-item" data-screen="cows"><i class="fas fa-cow"></i><span>Cows</span></a>
+      <a href="#" class="tab-item" data-screen="reports"><i class="fas fa-chart-pie"></i><span>Reports</span></a>
+      <a href="#" class="tab-item" data-screen="alerts"><i class="fas fa-bell"></i><span>Alerts</span><span class="badge">0</span></a>
+    </nav>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/index.js" defer></script>
+  <script src="js/auth.js" defer></script>
+</body>
+</html>
