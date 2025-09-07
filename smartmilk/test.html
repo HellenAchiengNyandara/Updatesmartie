@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMARTMILK Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>SMARTMILK Debug Test</h1>
+        
+        <div id="status-container">
+            <div class="status info">Testing application components...</div>
+        </div>
+        
+        <div id="test-results"></div>
+        
+        <h3>Quick Actions:</h3>
+        <button onclick="testBackend()">Test Backend Connection</button>
+        <button onclick="testAuth()">Test Authentication</button>
+        <button onclick="testData()">Test Data Loading</button>
+        <button onclick="openMainApp()">Open Main App</button>
+    </div>
+
+    <script>
+        const statusContainer = document.getElementById('status-container');
+        const resultsContainer = document.getElementById('test-results');
+        
+        function addStatus(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.textContent = message;
+            statusContainer.appendChild(div);
+        }
+        
+        function addResult(message) {
+            const div = document.createElement('div');
+            div.innerHTML = message;
+            resultsContainer.appendChild(div);
+        }
+        
+        // Test backend connection
+        async function testBackend() {
+            addStatus('Testing backend connection...', 'info');
+            try {
+                const response = await fetch('http://localhost:5000/api/test');
+                if (response.ok) {
+                    const data = await response.json();
+                    addStatus('✅ Backend is running!', 'success');
+                    addResult(`<strong>Backend Response:</strong> ${JSON.stringify(data)}`);
+                } else {
+                    addStatus('❌ Backend responded with error', 'error');
+                }
+            } catch (error) {
+                addStatus('❌ Backend connection failed', 'error');
+                addResult(`<strong>Error:</strong> ${error.message}`);
+            }
+        }
+        
+        // Test authentication
+        async function testAuth() {
+            addStatus('Testing authentication...', 'info');
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        password: 'testpassword'
+                    })
+                });
+                
+                if (response.status === 400) {
+                    addStatus('✅ Auth endpoint is working (expected 400 for invalid credentials)', 'success');
+                } else {
+                    addStatus(`Auth responded with status: ${response.status}`, 'info');
+                }
+            } catch (error) {
+                addStatus('❌ Auth endpoint failed', 'error');
+                addResult(`<strong>Error:</strong> ${error.message}`);
+            }
+        }
+        
+        // Test data loading
+        async function testData() {
+            addStatus('Testing data endpoints...', 'info');
+            try {
+                // Test cows endpoint (should require auth)
+                const cowsResponse = await fetch('http://localhost:5000/api/cows');
+                if (cowsResponse.status === 401) {
+                    addStatus('✅ Cows endpoint properly requires authentication', 'success');
+                } else {
+                    addStatus(`Cows endpoint status: ${cowsResponse.status}`, 'info');
+                }
+                
+                // Test farm endpoint (should require auth)
+                const farmResponse = await fetch('http://localhost:5000/api/farm');
+                if (farmResponse.status === 401) {
+                    addStatus('✅ Farm endpoint properly requires authentication', 'success');
+                } else {
+                    addStatus(`Farm endpoint status: ${farmResponse.status}`, 'info');
+                }
+            } catch (error) {
+                addStatus('❌ Data endpoints failed', 'error');
+                addResult(`<strong>Error:</strong> ${error.message}`);
+            }
+        }
+        
+        // Open main app
+        function openMainApp() {
+            window.location.href = 'index.html';
+        }
+        
+        // Run initial tests
+        window.addEventListener('load', () => {
+            addStatus('Page loaded successfully', 'success');
+            testBackend();
+        });
+    </script>
+</body>
+</html>
+

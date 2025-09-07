@@ -1,6 +1,9 @@
 // controllers/authController.js
 import { findUserByEmail, createUser } from "../models/UserModel.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // REGISTER
 export const register = async (req, res) => {
@@ -32,7 +35,18 @@ export const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
-    res.status(200).json({ message: "Login successful", user: { id: user.id, name: user.name, email: user.email } });
+    // Generate JWT token
+    const token = jwt.sign(
+      { id: user.id, email: user.email, role: user.role },
+      JWT_SECRET,
+      { expiresIn: '24h' }
+    );
+
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      user: { id: user.id, name: user.name, email: user.email, role: user.role }
+    });
 
   } catch (err) {
     console.error("login error:", err);

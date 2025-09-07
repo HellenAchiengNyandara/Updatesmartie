@@ -507,26 +507,38 @@ window.app = {
   renderCows: function(container) {
     const cows = [...dataService.cows].sort((a, b) => b.milkVolume - a.milkVolume);
 
+    // Check if user is admin (email = trial123@gmail.com)
+    const token = localStorage.getItem('token');
+    let isAdmin = false;
+    if (token) {
+      const decoded = utils.decodeJwt(token);
+      isAdmin = decoded && decoded.email === 'trial123@gmail.com';
+    }
+
     if (!cows || cows.length === 0) {
+      const addButtonHtml = isAdmin ? `
+        <button class="btn btn-primary" id="add-cow-btn">
+          <i class="fas fa-plus"></i> Add Cow
+        </button>
+      ` : '';
+
       container.innerHTML = `
         <div class="section-header">
           <h2>All Cows (0)</h2>
-          <button class="btn btn-primary" id="add-cow-btn">
-            <i class="fas fa-plus"></i> Add Cow
-          </button>
+          ${addButtonHtml}
         </div>
         <div class="empty-state">
           <i class="fas fa-cow"></i>
           <p>No cows in the farm yet.</p>
-          <button class="btn btn-primary" id="add-first-cow-btn">Add Your First Cow</button>
+          ${isAdmin ? '<button class="btn btn-primary" id="add-first-cow-btn">Add Your First Cow</button>' : ''}
         </div>
       `;
       this.setupCowEventListeners();
       return;
     }
 
-    const cowsHtml = cows.map(cow => `
-      <div class="cow-card" data-cow-id="${cow.id}">
+    const cowsHtml = cows.map(cow => {
+      const actionsHtml = isAdmin ? `
         <div class="cow-actions">
           <button class="btn btn-sm btn-edit" data-cow-id="${cow.id}" title="Edit">
             <i class="fas fa-edit"></i>
@@ -535,48 +547,58 @@ window.app = {
             <i class="fas fa-trash"></i>
           </button>
         </div>
-        <img src="${cow.photo}" alt="${cow.name}" class="cow-image">
-        <div class="cow-info">
-          <div class="cow-name">${cow.name}</div>
-          <div class="cow-id">${cow.id}</div>
-          <div class="cow-stats">
-            <div class="cow-stat">
-              <div class="value">${utils.formatMilkVolume(cow.milkVolume)}</div>
-              <div class="label">Milk</div>
+      ` : '';
+
+      return `
+        <div class="cow-card" data-cow-id="${cow.id}">
+          ${actionsHtml}
+          <img src="${cow.photo}" alt="${cow.name}" class="cow-image">
+          <div class="cow-info">
+            <div class="cow-name">${cow.name}</div>
+            <div class="cow-id">${cow.id}</div>
+            <div class="cow-stats">
+              <div class="cow-stat">
+                <div class="value">${utils.formatMilkVolume(cow.milkVolume)}</div>
+                <div class="label">Milk</div>
+              </div>
+              <div class="cow-stat">
+                <div class="value">${utils.formatPercentage(cow.fatPercent)}</div>
+                <div class="label">Fat</div>
+              </div>
+              <div class="cow-stat">
+                <div class="value">${utils.formatPercentage(cow.proteinPercent)}</div>
+                <div class="label">Protein</div>
+              </div>
+              <div class="cow-stat">
+                <div class="value">${utils.formatPercentage(cow.lactosePercent)}</div>
+                <div class="label">Lactose</div>
+              </div>
+              <div class="cow-stat">
+                <div class="value">${utils.formatPH(cow.pH)}</div>
+                <div class="label">pH</div>
+              </div>
             </div>
-            <div class="cow-stat">
-              <div class="value">${utils.formatPercentage(cow.fatPercent)}</div>
-              <div class="label">Fat</div>
-            </div>
-            <div class="cow-stat">
-              <div class="value">${utils.formatPercentage(cow.proteinPercent)}</div>
-              <div class="label">Protein</div>
-            </div>
-            <div class="cow-stat">
-              <div class="value">${utils.formatPercentage(cow.lactosePercent)}</div>
-              <div class="label">Lactose</div>
-            </div>
-            <div class="cow-stat">
-              <div class="value">${utils.formatPH(cow.pH)}</div>
-              <div class="label">pH</div>
-            </div>
+            ${cow.alerts && cow.alerts.length > 0 ? `
+              <div class="cow-alerts">
+                <i class="fas fa-exclamation-triangle"></i>
+                ${cow.alerts.join(', ')}
+              </div>
+            ` : ''}
           </div>
-          ${cow.alerts && cow.alerts.length > 0 ? `
-            <div class="cow-alerts">
-              <i class="fas fa-exclamation-triangle"></i>
-              ${cow.alerts.join(', ')}
-            </div>
-          ` : ''}
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
+
+    const addButtonHtml = isAdmin ? `
+      <button class="btn btn-primary" id="add-cow-btn">
+        <i class="fas fa-plus"></i> Add Cow
+      </button>
+    ` : '';
 
     container.innerHTML = `
       <div class="section-header">
         <h2>All Cows (${cows.length})</h2>
-        <button class="btn btn-primary" id="add-cow-btn">
-          <i class="fas fa-plus"></i> Add Cow
-        </button>
+        ${addButtonHtml}
       </div>
       <div class="cow-list">
         ${cowsHtml}
